@@ -1,5 +1,7 @@
 'use client';
 
+import { client } from '@/lib/client';
+import { useMutation } from '@tanstack/react-query';
 import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
 
@@ -32,6 +34,13 @@ export default function Home() {
 
     main();
   }, []);
+
+  const { mutate: createRoom } = useMutation({
+    mutationFn: async () => {
+      const res = await client.room.create.post();
+      console.log(res);
+    },
+  });
 
   const displayUsername = username || '...';
 
@@ -75,6 +84,7 @@ export default function Home() {
 
             {/* ENHANCEMENT: Use the amber accent color for the button and add hover/disabled styles */}
             <button
+              onClick={() => createRoom()}
               className="w-full mt-8 py-3 font-semibold rounded transition-all duration-200 ease-in-out text-zinc-950 bg-amber-400 hover:bg-amber-300 disabled:bg-zinc-700 disabled:text-zinc-500 cursor-pointer disabled:cursor-not-allowed"
               disabled={username === null}
             >
