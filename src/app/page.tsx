@@ -2,7 +2,6 @@
 
 import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
-import type { SetStateAction } from 'react';
 
 const ANIMALS = ['wolf', 'hawk', 'bear', 'shark'];
 const STORAGE_KEY = 'chat_username';
@@ -36,12 +35,10 @@ export default function Home() {
 
   const displayUsername = username || '...';
 
-  // Clean className and ADD rounded corners (rounded-lg) and a slight shadow (shadow-2xl)
   const cardClassName =
     'border border-zinc-800 bg-zinc-900/50 p-6 backdrop-blur-md rounded-lg shadow-2xl';
 
   return (
-    // ENHANCEMENT: Add a subtle dark radial gradient background to main
     <main className="flex flex-col justify-center items-center min-h-screen p-4 bg-zinc-950 bg-radial-gradient">
       <div className="w-full max-w-md space-y-8">
         {/* ENHANCEMENT: Title with a strong tracking and an icon */}
@@ -78,10 +75,7 @@ export default function Home() {
 
             {/* ENHANCEMENT: Use the amber accent color for the button and add hover/disabled styles */}
             <button
-              className="w-full mt-8 py-3 font-semibold rounded transition-all duration-200 ease-in-out 
-                         text-zinc-950 
-                         bg-amber-400 hover:bg-amber-300 
-                         disabled:bg-zinc-700 disabled:text-zinc-500 cursor-pointer disabled:cursor-not-allowed"
+              className="w-full mt-8 py-3 font-semibold rounded transition-all duration-200 ease-in-out text-zinc-950 bg-amber-400 hover:bg-amber-300 disabled:bg-zinc-700 disabled:text-zinc-500 cursor-pointer disabled:cursor-not-allowed"
               disabled={username === null}
             >
               CREATE SECURE CONNECTION
